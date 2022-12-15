@@ -14,7 +14,8 @@ class SplashScrenn extends GetView<HomeController> {
           child: Text(
         "BMI\nCALCULATOR",
         textAlign: TextAlign.center,
-        style: GoogleFonts.inder(color: Theme.of(context).backgroundColor, fontSize: 28.sp),
+        style: GoogleFonts.inder(
+            color: Theme.of(context).colorScheme.background, fontSize: 28.sp),
       )),
     );
   }

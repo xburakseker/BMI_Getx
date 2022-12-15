@@ -4,6 +4,8 @@ import 'package:getx_architecture/modules/home/home_controller.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class BMIDetail extends GetView<HomeController> {
+  const BMIDetail({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +36,10 @@ class BMIDetail extends GetView<HomeController> {
               child: Text(
                 "Your BMI is",
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.black.withOpacity(0.7), fontSize: 40, fontWeight: FontWeight.w500),
+                style: TextStyle(
+                    color: Colors.black.withOpacity(0.7),
+                    fontSize: 40,
+                    fontWeight: FontWeight.w500),
               ),
             ),
             buildSizedBox(3),
@@ -46,7 +51,10 @@ class BMIDetail extends GetView<HomeController> {
                 overflow: TextOverflow.clip,
                 text: TextSpan(
                   text: controller.result.toString(),
-                  style: TextStyle(color: Colors.green.withBlue(109), fontSize: 90, fontWeight: FontWeight.w500),
+                  style: TextStyle(
+                      color: Colors.green.withBlue(109),
+                      fontSize: 90,
+                      fontWeight: FontWeight.w500),
                 ),
               ),
             ),
@@ -57,7 +65,11 @@ class BMIDetail extends GetView<HomeController> {
               alignment: Alignment.center,
               child: controller.explanation(),
             ),
-            buildExplanations(20, 70, TextStyle(color: Colors.black.withOpacity(0.7), fontSize: 16), controller.explanation2()!),
+            buildExplanations(
+                20,
+                70,
+                TextStyle(color: Colors.black.withOpacity(0.7), fontSize: 16),
+                controller.explanation2()!),
           ]),
         ),
         buildSizedBox(20),
@@ -70,7 +82,9 @@ class BMIDetail extends GetView<HomeController> {
             alignment: Alignment.center,
             height: 7.h,
             width: 80.w,
-            decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(30)), color: Colors.blue),
+            decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(30)),
+                color: Colors.blue),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -81,7 +95,10 @@ class BMIDetail extends GetView<HomeController> {
                 buildSizedBoxWidth(2),
                 const Text(
                   "Start over",
-                  style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.w500),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w500),
                 ),
               ],
             ),
@@ -91,7 +108,8 @@ class BMIDetail extends GetView<HomeController> {
     );
   }
 
-  Container buildExplanations(int height, int width, TextStyle? textStyle, String explanation) {
+  Container buildExplanations(
+      int height, int width, TextStyle? textStyle, String explanation) {
     return Container(
       height: height.h,
       width: width.w,

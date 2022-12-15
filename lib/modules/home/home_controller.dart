@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:getx_architecture/routes/app_pages.dart';
 
 class HomeController extends GetxController {
   String? data;
@@ -21,11 +21,12 @@ class HomeController extends GetxController {
   calculateBMI(double weight, double height) {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
-      if (weightEditingController.text != '' && heightEditingController.text != '') {
+      if (weightEditingController.text != '' &&
+          heightEditingController.text != '') {
         weight = double.parse(weightEditingController.text);
         height = double.parse(heightEditingController.text);
         result.value = (weight / ((height / 100) * (height / 100)));
-        //NAVIGATE TO DETAIL PAGE
+        Get.toNamed(Routes.BMI_DETAIL);
       } else {
         Fluttertoast.showToast(
           msg: "Please enter values",
@@ -69,28 +70,39 @@ class HomeController extends GetxController {
     if (result < 18.5) {
       return const Text(
         "UNDERWEIGHT",
-        style: TextStyle(color: Colors.red, fontSize: 30, fontWeight: FontWeight.bold),
+        style: TextStyle(
+            color: Colors.red, fontSize: 30, fontWeight: FontWeight.bold),
       );
     } else if (result < 25 && result >= 18.5) {
       return const Text(
         "NORMAL",
-        style: TextStyle(color: Colors.green, fontSize: 24, fontWeight: FontWeight.bold),
+        style: TextStyle(
+            color: Colors.green, fontSize: 24, fontWeight: FontWeight.bold),
       );
     } else if (result < 30 && result >= 25) {
       return Text(
         "OVERWEIGHT",
-        style: TextStyle(color: Colors.green.shade800, fontSize: 26, fontWeight: FontWeight.bold),
+        style: TextStyle(
+            color: Colors.green.shade800,
+            fontSize: 26,
+            fontWeight: FontWeight.bold),
       );
     } else if (result < 35 && result >= 30) {
       return Text(
         "OBESE",
-        style: TextStyle(color: Colors.red.shade600, fontSize: 30, fontWeight: FontWeight.bold),
+        style: TextStyle(
+            color: Colors.red.shade600,
+            fontSize: 30,
+            fontWeight: FontWeight.bold),
       );
     } else if (result >= 35) {
       return Text(
         "EXTREMELY\nOBESE",
         textAlign: TextAlign.center,
-        style: TextStyle(color: Colors.red.shade700, fontSize: 34, fontWeight: FontWeight.bold),
+        style: TextStyle(
+            color: Colors.red.shade700,
+            fontSize: 34,
+            fontWeight: FontWeight.bold),
       );
     } else {
       return const Text(
