@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'routes/routes.dart';
 
 void main() {
@@ -11,15 +12,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: 'Flutter Demo',
-      initialRoute: Routes.SPLASH,
-      enableLog: true,
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      getPages: AppPages.routes,
+    return ResponsiveSizer(
+      builder: (context, orientation, screenType) {
+        return GetMaterialApp(
+          title: 'Flutter Demo',
+          initialRoute: Routes.SPLASH,
+          enableLog: true,
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          getPages: AppPages.routes,
+        );
+      },
     );
   }
 }
