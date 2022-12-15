@@ -6,8 +6,11 @@ import 'package:getx_architecture/routes/app_pages.dart';
 class HomeController extends GetxController {
   String? data;
 
+  RxBool isDark = false.obs;
+
   TextEditingController heightEditingController = TextEditingController();
   TextEditingController weightEditingController = TextEditingController();
+
   final formKey = GlobalKey<FormState>();
 
   RxDouble result = 0.0.obs;
@@ -35,6 +38,13 @@ class HomeController extends GetxController {
         );
       }
     }
+  }
+
+  changeTheme() {
+    isDark.value = !isDark.value;
+    isDark.value
+        ? Get.changeTheme(ThemeData.dark())
+        : Get.changeTheme(ThemeData.light());
   }
 
   inputControl(int minValue, int maxValue, String value) {

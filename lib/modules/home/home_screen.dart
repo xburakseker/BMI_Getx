@@ -17,7 +17,26 @@ class HomeScreen extends GetView<HomeController> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            buildSizedBox(1),
+            Center(
+              child: Obx(
+                () => GestureDetector(
+                  onTap: () {
+                    controller.changeTheme();
+                  },
+                  child: controller.isDark == false
+                      ? Icon(
+                          Icons.dark_mode,
+                          color: Colors.black38,
+                          size: 25.sp,
+                        )
+                      : Icon(
+                          Icons.sunny,
+                          color: Colors.yellow.shade100,
+                          size: 25.sp,
+                        ),
+                ),
+              ),
+            ),
             Center(
               child: Text(
                 "Lets calculate\nyour BMI",
